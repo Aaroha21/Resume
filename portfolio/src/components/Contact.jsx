@@ -1,13 +1,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiSend, FiUser, FiMail, FiMessageSquare, FiGithub, FiLinkedin, FiMapPin, FiPhone } from 'react-icons/fi';
+import { FiSend, FiUser, FiMail, FiMessageSquare, FiGithub, FiLinkedin, FiMapPin } from 'react-icons/fi';
 import { useTheme } from '../context/ThemeContext';
 import { personalInfo } from '../data/portfolioData';
 import SectionTitle from './SectionTitle';
 import toast from 'react-hot-toast';
-import axios from 'axios';
-
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 const contactInfo = [
   { icon: <FiMail size={20} />, label: 'Email', value: personalInfo.email, href: `mailto:${personalInfo.email}` },
@@ -57,27 +54,29 @@ const Contact = () => {
 
     setLoading(true);
     try {
-      await axios.post(`${API_URL}/api/contact`, form);
-      toast.success('Message sent successfully! I\'ll get back to you soon. 🎉', {
-        duration: 5000,
-        style: { background: isDark ? '#1f2937' : '#fff', color: isDark ? '#fff' : '#111', border: '1px solid #6366f1' },
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
       });
-      setForm({ name: '', email: '', message: '' });
-      setErrors({});
-    } catch (error) {
-      // If backend isn't connected, show a success simulation for demo
-      if (error.code === 'ERR_NETWORK' || error.response?.status === 404) {
-        toast.success('Demo mode: Message received! (Connect FastAPI backend for real submissions)', {
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        toast.success('Message sent successfully! I\'ll get back to you soon. 🎉', {
           duration: 5000,
           style: { background: isDark ? '#1f2937' : '#fff', color: isDark ? '#fff' : '#111', border: '1px solid #6366f1' },
         });
         setForm({ name: '', email: '', message: '' });
         setErrors({});
       } else {
-        toast.error('Failed to send message. Please try again.', {
+        toast.error(data.message || 'Failed to send message. Please try again.', {
           style: { background: isDark ? '#1f2937' : '#fff', color: isDark ? '#fff' : '#111' },
         });
       }
+    } catch (error) {
+      toast.error('Failed to send message. Please try again.', {
+        style: { background: isDark ? '#1f2937' : '#fff', color: isDark ? '#fff' : '#111' },
+      });
     } finally {
       setLoading(false);
     }
