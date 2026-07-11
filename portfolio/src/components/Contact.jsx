@@ -17,10 +17,9 @@ const contactInfo = [
 ];
 
 const inputClass = (isDark, hasError) =>
-  `w-full px-4 py-3 rounded-xl border text-sm font-medium transition-all outline-none focus:ring-2 focus:ring-indigo-500/50 ${
-    hasError
-      ? 'border-red-500 bg-red-500/5'
-      : isDark
+  `w-full px-4 py-3 rounded-xl border text-sm font-medium transition-all outline-none focus:ring-2 focus:ring-indigo-500/50 ${hasError
+    ? 'border-red-500 bg-red-500/5'
+    : isDark
       ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-indigo-500'
       : 'bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400 focus:border-indigo-400 focus:bg-white'
   }`;
@@ -104,7 +103,7 @@ const Contact = () => {
               Let's build something amazing together
             </h3>
             <p className={`text-base leading-relaxed mb-8 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              I'm currently open to freelance projects and full-time opportunities. Whether you have a project in mind, 
+              I'm currently open to freelance projects and full-time opportunities. Whether you have a project in mind,
               a question, or just want to connect — my inbox is always open!
             </p>
 
@@ -123,11 +122,10 @@ const Contact = () => {
                       href={item.href}
                       target={item.href.startsWith('mailto') ? '_self' : '_blank'}
                       rel="noopener noreferrer"
-                      className={`flex items-center gap-4 p-4 rounded-xl transition-all group ${
-                        isDark
-                          ? 'bg-gray-800 hover:bg-gray-750 border border-gray-700/50 hover:border-indigo-500/40'
-                          : 'bg-gray-50 hover:bg-indigo-50 border border-gray-200 hover:border-indigo-200'
-                      }`}
+                      className={`flex items-center gap-4 p-4 rounded-xl transition-all group ${isDark
+                        ? 'bg-gray-800 hover:bg-gray-750 border border-gray-700/50 hover:border-indigo-500/40'
+                        : 'bg-gray-50 hover:bg-indigo-50 border border-gray-200 hover:border-indigo-200'
+                        }`}
                     >
                       <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white flex-shrink-0">
                         {item.icon}
@@ -143,11 +141,10 @@ const Contact = () => {
                     </a>
                   ) : (
                     <div
-                      className={`flex items-center gap-4 p-4 rounded-xl ${
-                        isDark
-                          ? 'bg-gray-800 border border-gray-700/50'
-                          : 'bg-gray-50 border border-gray-200'
-                      }`}
+                      className={`flex items-center gap-4 p-4 rounded-xl ${isDark
+                        ? 'bg-gray-800 border border-gray-700/50'
+                        : 'bg-gray-50 border border-gray-200'
+                        }`}
                     >
                       <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white flex-shrink-0">
                         {item.icon}
@@ -177,11 +174,10 @@ const Contact = () => {
             <form
               onSubmit={handleSubmit}
               noValidate
-              className={`p-6 sm:p-8 rounded-2xl ${
-                isDark
-                  ? 'bg-gray-800 border border-gray-700/50'
-                  : 'bg-gray-50 border border-gray-200 shadow-sm'
-              }`}
+              className={`p-6 sm:p-8 rounded-2xl ${isDark
+                ? 'bg-gray-800 border border-gray-700/50'
+                : 'bg-gray-50 border border-gray-200 shadow-sm'
+                }`}
             >
               <h3 className={`text-lg font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                 Send me a message
@@ -198,7 +194,7 @@ const Contact = () => {
                   name="name"
                   value={form.name}
                   onChange={handleChange}
-                  placeholder="John Doe"
+                  placeholder="ABC"
                   className={inputClass(isDark, !!errors.name)}
                   aria-describedby={errors.name ? 'name-error' : undefined}
                 />
@@ -218,7 +214,7 @@ const Contact = () => {
                   name="email"
                   value={form.email}
                   onChange={handleChange}
-                  placeholder="john@example.com"
+                  placeholder="abc@example.com"
                   className={inputClass(isDark, !!errors.email)}
                   aria-describedby={errors.email ? 'email-error' : undefined}
                 />

@@ -1,3 +1,4 @@
+const resumeFilePath = '..@/src/Resume .pdf';
 export const personalInfo = {
   name: 'Aaroha Vartak',
   initials: 'AV',
@@ -7,7 +8,7 @@ export const personalInfo = {
   github: 'https://github.com/Aaroha21',
   linkedin: 'https://www.linkedin.com/in/aaroha-vartak/',
   location: 'India',
-  resumeUrl: '/resume.pdf',
+  resumeUrl: ,
   logoImage: '/logo.png', // Place your AV logo in public/logo.png
   about: `I'm a passionate Full Stack Developer with expertise in building modern, scalable web applications. I specialize in React.js for frontend development and FastAPI for backend services, with hands-on experience in Supabase and SQL databases.`,
   objective: `My career objective is to leverage my technical skills in full-stack development to build impactful digital solutions. I aim to contribute to innovative projects while continuously growing as a developer and collaborating with driven teams.`,
@@ -49,7 +50,7 @@ export const projects = [
     image: null,
     color: 'from-amber-500 to-orange-600',
     github: 'https://github.com/Aaroha21/watch-store',
-    demo: 'https://watch-store-demo.vercel.app',
+    demo: 'https://watch-store-.vercel.app',
     featured: true,
   },
   {
